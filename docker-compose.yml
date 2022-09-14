@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  backend-golang:
+    container_name: clean-go-backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/app
+    restart: always
+    depends_on:
+      - postgres-db-golang
+
+  postgres-db-golang:
+    container_name: postgres-db-golang
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - ./postgres/:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: always

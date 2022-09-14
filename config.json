@@ -1,0 +1,8 @@
+{
+  "database": {
+    "url": "host=postgres-db-golang user=postgres password=postgres dbname=postgres port=5432"
+  },
+  "server": {
+    "port": "3000"
+  }
+}
