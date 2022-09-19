@@ -8,7 +8,7 @@ env:
   ECR_REPOSITORY: cluster-golang-app        
   ECS_SERVICE: golang-app-service               
   ECS_CLUSTER: golang-app             
-  ECS_TASK_DEFINITION: ./aws/td.json
+  ECS_TASK_DEFINITION: ./../aws/td.json
   CONTAINER_NAME: golang-app-container
 
 jobs:
