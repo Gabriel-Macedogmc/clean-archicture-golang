@@ -36,8 +36,17 @@ jobs:
       packages: write
       contents: read
     steps:
-      - name: Checkout
+     - name: Checkout
         uses: actions/checkout@v2
+      - name: Set Tag Number
+        id: tag-number
+        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+      - name: Check Tag Release
+        env:
+          RELEASE_VERSION: ${{ steps.tag-number.outputs.tag }}
+        run: |
+          echo $RELEASE_VERSION
+          echo ${{ steps.vars.outputs.tag }}
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
