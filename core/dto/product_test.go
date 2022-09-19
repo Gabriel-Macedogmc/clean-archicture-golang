@@ -23,7 +23,6 @@ func TestFromJSONCreateProductRequest(t *testing.T) {
 	require.Equal(t, itemRequest.Name, fakeItem.Name)
 	require.Equal(t, itemRequest.Price, fakeItem.Price)
 	require.Equal(t, itemRequest.Description, fakeItem.Description)
-
 }
 
 func TestFromJSONCreateProductRequest_JSONDecodeError(t *testing.T) {

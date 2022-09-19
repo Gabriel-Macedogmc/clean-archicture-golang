@@ -1,13 +1,24 @@
-FROM golang:1.18
+FROM golang AS builder
 
-WORKDIR /app
+ADD . /go/api
+WORKDIR /go/api
 
-COPY go.mod go.sum /app/
+RUN rm -rf deploy
+RUN mkdir deploy
+ARG DATABASE_URL
 
-RUN go mod download && go mod verify
+ENV DATABASE_URL=${DATABASE_URL}
+ENV PORT=3000
+ENV APP_MODE="prod"
 
-RUN go install github.com/cosmtrek/air@latest
+RUN go mod tidy
 
-COPY ./ /app/
+RUN CGO_ENABLED=0 go build -o goapp ./adapter/main.go
+RUN mv goapp ./deploy/goapp
+RUN mv .env ./deploy/
 
-CMD ["air"]
+FROM scratch AS production
+COPY --from=builder /go/api/deploy /api/
+
+WORKDIR /api
+ENTRYPOINT ./goapp

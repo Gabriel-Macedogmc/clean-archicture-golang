@@ -12,7 +12,7 @@ import (
 )
 
 func init() {
-	viper.SetConfigFile(`config.json`)
+	viper.SetConfigFile(`.env`)
 	err := viper.ReadInConfig()
 
 	if err != nil {
@@ -21,7 +21,14 @@ func init() {
 }
 
 func main() {
-	databaseUrl := viper.GetString("database.url")
+	appMode := viper.GetString("APP_MODE")
+
+	log.Println(appMode)
+
+	databaseUrl := viper.GetString("DATABASE_URL")
+	if appMode != "dev" {
+		panic("You must set DATABASE")
+	}
 	conn := postgres.ConnectToDatabase(databaseUrl)
 	postgres.Migrate()
 
@@ -37,7 +44,7 @@ func main() {
 		"search", "{search}",
 	).Methods("GET")
 
-	port := viper.GetString("server.port")
+	port := viper.GetString("PORT")
 	log.Printf("LISTEN ON PORT: %v", port)
 
 	http.ListenAndServe(fmt.Sprintf(":%v", port), router)

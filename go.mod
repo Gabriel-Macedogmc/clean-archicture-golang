@@ -8,6 +8,7 @@ require (
 )
 
 require (
+	github.com/DATA-DOG/go-sqlmock v1.5.0 // indirect
 	github.com/booscaaa/go-paginate v0.0.9 // indirect
 	github.com/bxcodec/faker/v3 v3.8.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
