@@ -1,7 +1,7 @@
 name: Deploy To Amazon ECS
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 env:
   AWS_REGION: us-east-1                   
@@ -12,6 +12,10 @@ env:
   CONTAINER_NAME: nginx
 
 defaults:
+  run:
+    shell: bash
+
+jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
