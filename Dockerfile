@@ -15,7 +15,6 @@ RUN go mod tidy
 
 RUN CGO_ENABLED=0 go build -o goapp ./adapter/main.go
 RUN mv goapp ./deploy/goapp
-RUN mv .env ./deploy/
 
 FROM scratch AS production
 COPY --from=builder /go/api/deploy /api/
