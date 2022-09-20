@@ -17,7 +17,7 @@
       "entryPoint": null,
       "portMappings": [
         {
-          "hostPort": 3000,
+          "hostPort": 80,
           "protocol": "tcp",
           "containerPort": 3000
         }
@@ -37,7 +37,7 @@
       "memoryReservation": null,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "757797389303.dkr.ecr.us-east-1.amazonaws.com/cluster-golang-app:87596a1c73be65b5451b98f6492f47abbca2ef1f",
+      "image": "757797389303.dkr.ecr.us-east-1.amazonaws.com/cluster-golang-app:810249535a29ba6bdddb9756448b2add01723cba",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -61,7 +61,7 @@
   "memory": "512",
   "taskRoleArn": null,
   "compatibilities": ["EXTERNAL", "EC2"],
-  "taskDefinitionArn": "arn:aws:ecs:us-east-1:757797389303:task-definition/golang-app:9",
+  "taskDefinitionArn": "arn:aws:ecs:us-east-1:757797389303:task-definition/golang-app:13",
   "family": "golang-app",
   "requiresAttributes": [
     {
@@ -88,7 +88,7 @@
   "networkMode": null,
   "runtimePlatform": null,
   "cpu": "512",
-  "revision": 9,
+  "revision": 13,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
