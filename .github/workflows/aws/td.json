@@ -5,7 +5,15 @@
     {
       "dnsSearchDomains": null,
       "environmentFiles": null,
-      "logConfiguration": null,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "secretOptions": null,
+        "options": {
+          "awslogs-group": "/ecs/golang-app",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
       "entryPoint": null,
       "portMappings": [
         {
@@ -29,7 +37,7 @@
       "memoryReservation": null,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "757797389303.dkr.ecr.us-east-1.amazonaws.com/cluster-golang-app:4298940f968191bfcf6fb9949806a791804383b2",
+      "image": "757797389303.dkr.ecr.us-east-1.amazonaws.com/cluster-golang-app:87596a1c73be65b5451b98f6492f47abbca2ef1f",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -53,14 +61,26 @@
   "memory": "512",
   "taskRoleArn": null,
   "compatibilities": ["EXTERNAL", "EC2"],
-  "taskDefinitionArn": "arn:aws:ecs:us-east-1:757797389303:task-definition/golang-app:1",
+  "taskDefinitionArn": "arn:aws:ecs:us-east-1:757797389303:task-definition/golang-app:9",
   "family": "golang-app",
   "requiresAttributes": [
     {
       "targetId": null,
       "targetType": null,
       "value": null,
+      "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
       "name": "com.amazonaws.ecs.capability.ecr-auth"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
     }
   ],
   "pidMode": null,
@@ -68,7 +88,7 @@
   "networkMode": null,
   "runtimePlatform": null,
   "cpu": "512",
-  "revision": 1,
+  "revision": 9,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
