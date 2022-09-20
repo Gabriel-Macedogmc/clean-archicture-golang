@@ -20,4 +20,4 @@ FROM scratch AS production
 COPY --from=builder /go/api/deploy /api/
 
 WORKDIR /api
-ENTRYPOINT ./goapp
+CMD ["./goapp"]
