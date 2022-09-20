@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/Gabriel-Macedogmc/clean-archicture-golang/adapter/postgres"
 	"github.com/Gabriel-Macedogmc/clean-archicture-golang/di"
@@ -12,6 +13,10 @@ import (
 )
 
 func init() {
+	appEnv := os.Getenv("APP_ENV")
+
+	log.Println(appEnv)
+
 	viper.SetConfigFile(`.env`)
 	err := viper.ReadInConfig()
 

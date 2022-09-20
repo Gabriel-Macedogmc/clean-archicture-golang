@@ -8,7 +8,7 @@ require (
 )
 
 require (
-	github.com/DATA-DOG/go-sqlmock v1.5.0 // indirect
+	github.com/DATA-DOG/go-sqlmock v1.5.0
 	github.com/booscaaa/go-paginate v0.0.9 // indirect
 	github.com/bxcodec/faker/v3 v3.8.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
@@ -44,5 +44,5 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	gorm.io/driver/postgres v1.3.9 // indirect
-	gorm.io/gorm v1.23.8 // indirect
+	gorm.io/gorm v1.23.9 // indirect
 )

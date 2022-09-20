@@ -21,6 +21,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Config file access
+        run: |
+          rm -rf .env
+          touch .env 
+
       - name: Set Tag Number
         id: tag-number
         run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
