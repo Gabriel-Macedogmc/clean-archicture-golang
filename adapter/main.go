@@ -9,31 +9,17 @@ import (
 	"github.com/Gabriel-Macedogmc/clean-archicture-golang/adapter/postgres"
 	"github.com/Gabriel-Macedogmc/clean-archicture-golang/di"
 	"github.com/gorilla/mux"
-	"github.com/spf13/viper"
 )
 
-func init() {
-	appEnv := os.Getenv("APP_ENV")
-
-	log.Println(appEnv)
-
-	viper.SetConfigFile(`.env`)
-	err := viper.ReadInConfig()
-
-	if err != nil {
-		panic(err)
-	}
-}
-
 func main() {
-	appMode := viper.GetString("APP_MODE")
+	appMode := os.Getenv("APP_ENV")
 
 	log.Println(appMode)
 
-	databaseUrl := viper.GetString("DATABASE_URL")
-	if appMode != "dev" {
-		panic("You must set DATABASE")
-	}
+	databaseUrl := os.Getenv("DATABASE_URL")
+
+	log.Println(databaseUrl)
+
 	conn := postgres.ConnectToDatabase(databaseUrl)
 	postgres.Migrate()
 
@@ -49,7 +35,7 @@ func main() {
 		"search", "{search}",
 	).Methods("GET")
 
-	port := viper.GetString("PORT")
+	port := os.Getenv("PORT")
 	log.Printf("LISTEN ON PORT: %v", port)
 
 	http.ListenAndServe(fmt.Sprintf(":%v", port), router)

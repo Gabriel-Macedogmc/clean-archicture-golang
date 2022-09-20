@@ -17,7 +17,7 @@ ARG DATABASE_URL
 
 ENV DATABASE_URL=${DATABASE_URL}
 ENV PORT=3000
-ENV APP_MODE="prod"
+ENV APP_ENV="prod"
 
 COPY --from=builder /go/api/deploy /api/
 
