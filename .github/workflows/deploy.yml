@@ -10,6 +10,7 @@ env:
   ECS_CLUSTER: golang-app             
   ECS_TASK_DEFINITION: ./.github/workflows/aws/td.json
   CONTAINER_NAME: golang-app-container
+  DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
 jobs:
   Push:
@@ -53,7 +54,6 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           REPOSITORY: my-ecr-repo
           IMAGE_TAG: ${{ github.sha }}
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
           docker build --build-arg DATABASE_URL=$DATABASE_URL -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG 
