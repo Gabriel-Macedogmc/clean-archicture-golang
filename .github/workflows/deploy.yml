@@ -55,7 +55,7 @@ jobs:
           REPOSITORY: my-ecr-repo
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build --build-arg DATABASE_URL=$DATABASE_URL -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker build --build-arg DATABASE_URL="host=ec2-3-232-22-121.compute-1.amazonaws.com user=papglscxniwden password=1c3f62f556e2e4e5c211bf42f9a7c5bfd7981f82d2b8f4928ce919df6737abb5 dbname=dasbmp4dbfvmh4 port=5432" -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG 
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
